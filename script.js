@@ -18,24 +18,15 @@ form.addEventListener('submit' , (e) => {
     cards.style.display = 'flex';
     
 });
-async function fetchData(city){
-    cityName = searchButton.value
-    let temp;
-    let feels_like;
-    let humidity;
-    let wind;
+async function fetchData(city){  
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     const response = await fetch(url , {mode:'cors'});
     const weatherData = await response.json();
-    temp = weatherData.main.temp;
-    feels_like = weatherData.main.feels_like
-    humidity = weatherData.main.humidity
-    wind = weatherData.wind.speed
-    cityCard.textContent = cityName.toUpperCase();
-    tempCard.textContent = `${temp} ℃`;
-    feels_likeCard.textContent = `FEELS LIKE: ${feels_like} ℃`;
-    windCard.textContent = `WIND: ${wind} Km/s`;
-    humidtyCard.textContent = `HUMIDITY: ${humidity}% `;
+    cityCard.textContent = searchButton.value.toUpperCase();
+    tempCard.textContent = `${weatherData.main.temp} ℃`;
+    feels_likeCard.textContent = `FEELS LIKE: ${weatherData.main.feels_like} ℃`;
+    windCard.textContent = `WIND: ${wind = weatherData.wind.speed} Km/s`;
+    humidtyCard.textContent = `HUMIDITY: ${humidity = weatherData.main.humidity}% `;
     
 
 }
